@@ -1,4 +1,4 @@
-## Configuration steps for RPI
+## Configuration steps for RaspberryPi
 
 #### Add local user
 ```
@@ -80,7 +80,7 @@ apt install -y apache2-utils
 htpasswd -c /scripts/docker/nginx/htpasswd USER
 ```
 
-#### Deploy docker containers
+#### Deploy compatible docker containers for RaspberryPi
 
 - duckdns
 - nginx
