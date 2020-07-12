@@ -82,14 +82,20 @@ htpasswd -c /scripts/docker/nginx/htpasswd USER
 
 #### Deploy compatible docker containers for RaspberryPi
 
+*docker-compose.yaml*
 - duckdns
 - nginx
-- nginx-proxy
+- nginx-proxy (80,443)
 - letsencrypt
 ```
 cd /scripts/docker
 docker-compose up -d
 ```
+
+*docker-compose2.yaml*
+- duckdns
+- nginx
+- nginx-proxy (80)
 
 ---
 ## Optional configs
