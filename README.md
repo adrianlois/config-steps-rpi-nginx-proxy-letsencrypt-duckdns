@@ -85,6 +85,12 @@ apt install -y apache2-utils
 htpasswd -c /scripts/docker/nginx/htpasswd USER
 ```
 
+#### Disable grace period sudo
+- /etc/sudoers
+```
+echo "Defaults timestamp_timeout=0" >> /etc/sudoers
+```
+
 #### Deploy compatible docker containers for RaspberryPi
 
 *docker-compose.yaml*
