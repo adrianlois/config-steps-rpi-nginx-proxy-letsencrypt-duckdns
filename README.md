@@ -40,7 +40,7 @@ Subsystem sftp  /usr/lib/openssh/sftp-server
 ```
 mkdir -p ~/.ssh && chmod 700 ~/.ssh
 touch ~/.ssh/authorized_keys && chmod 600 ~/.ssh/authorized_keys
-# set public key
+# set public key (ssh-rsa ...pubkey... rsa-key-xxxxxxxx)
 ```
 
 #### fail2ban config
