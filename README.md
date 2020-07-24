@@ -8,7 +8,7 @@ passwd adrian
 ```
 #### Delete user by default RPI
 ```
-userdel -f pi
+userdel -f pi or ubuntu
 ```
 #### Change hostname RPI
 ```
