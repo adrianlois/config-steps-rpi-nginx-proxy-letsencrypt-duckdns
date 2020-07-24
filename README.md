@@ -18,7 +18,7 @@ echo "IP rpi" >> /etc/hosts
 
 #### Install Docker & Docker Compose
 ```
-https://docs.docker.com/engine/install/debian/
+https://docs.docker.com/engine/install/ubuntu/
 https://docs.docker.com/compose/install/
 ```
 
