@@ -27,6 +27,7 @@ https://docs.docker.com/compose/install/
 ```
 PasswordAuthentication yes
 PubkeyAuthentication yes
+AuthorizedKeysFile  .ssh/authorized_keys
 AllowUsers adrian
 AllowTcpForwarding yes
 GatewayPorts yes
@@ -59,10 +60,15 @@ findtime = 600
 maxretry = 3
 ```
 
-#### Create shared folder
+#### Create shared and scripts folder
 ```
 mkdir /mnt/sharedrpi
 ln -s /mnt/sharedrpi /home/USER/sharedrpi
+
+mkdir /scripts && cd /scripts
+git clone https://github.com/adrianlois/RaspberryPi-config-nginx-proxy-letsencrypt-duckdns.git
+mv RaspberryPi-config-nginx-proxy-letsencrypt-duckdns/* .
+rm -r RaspberryPi-config-nginx-proxy-letsencrypt-duckdns/ && rm LICENSE && rm docker/nginx/htpasswd
 ```
 
 #### Crontab config
