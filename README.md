@@ -19,16 +19,6 @@ echo "rpi" > /etc/hostname
 echo "IP rpi" >> /etc/hosts
 ```
 
-#### Install Docker & Docker Compose
-- https://docs.docker.com/engine/install/ubuntu/
-- https://docs.docker.com/compose/install/
-```
-curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && sudo python3 get-pip.py
-apt install -y python3-pip libffi-dev
-curl -sSL https://get.docker.com | sh
-pip3 install docker-compose
-```
-
 #### SSH server config
 - /etc/ssh/sshd_config
 ```
@@ -97,6 +87,16 @@ htpasswd -c /scripts/docker/nginx/htpasswd USER
 - /etc/sudoers
 ```
 echo "Defaults timestamp_timeout=0" >> /etc/sudoers
+```
+
+#### Install Docker & Docker Compose
+- https://docs.docker.com/engine/install/ubuntu/
+- https://docs.docker.com/compose/install/
+```
+curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && sudo python3 get-pip.py
+apt install -y python3-pip libffi-dev
+curl -sSL https://get.docker.com | sh
+pip3 install docker-compose
 ```
 
 #### Deploy compatible docker containers for RaspberryPi
