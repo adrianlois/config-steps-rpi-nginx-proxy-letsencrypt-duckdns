@@ -71,6 +71,9 @@ rm -rf RaspberryPi-config-nginx-proxy-letsencrypt-duckdns/ docker/nginx/htpasswd
 ```
 
 #### Crontab config
+```
+chmod +x /scripts/sharedrpi.sh
+```
 - /etc/crontab
 ```
 # @reboot sleep 30 && /scripts/sharedrpi.sh
