@@ -1,6 +1,6 @@
 ## Configuration steps for RaspberryPi
 
-### Ubuntu for RPI
+### Download image Ubuntu for RPI
 - https://ubuntu.com/download/raspberry-pi
 
 #### Add local user
@@ -35,10 +35,18 @@ Subsystem sftp  /usr/lib/openssh/sftp-server
 
 #### SSH permission directories
 ```
+su - adrian
 mkdir -p ~/.ssh && chmod 700 ~/.ssh
 touch ~/.ssh/authorized_keys && chmod 600 ~/.ssh/authorized_keys
 ```
 > set public key (ssh-rsa ...pubkey... rsa-key-xxxxxxxx)
+```
+apt install -y tree
+adrian@rpi:~$ tree -puga
+├── [drwx------ adrian   adrian  ]  .ssh
+│   └── [-rw------- adrian   adrian  ]  authorized_keys
+└── [lrwxrwxrwx root     root    ]  sharedrpi -> /mnt/sharedrpi
+```
 
 #### fail2ban config
 ```
