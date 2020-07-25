@@ -1,5 +1,8 @@
 ## Configuration steps for RaspberryPi
 
+### Ubuntu for RPI
+- https://ubuntu.com/download/raspberry-pi
+
 #### Add local user
 ```
 useradd -m -s /bin/bash adrian
@@ -8,7 +11,7 @@ passwd adrian
 ```
 #### Delete user by default RPI
 ```
-userdel -f pi or ubuntu
+userdel -f ubuntu
 ```
 #### Change hostname RPI
 ```
@@ -17,9 +20,13 @@ echo "IP rpi" >> /etc/hosts
 ```
 
 #### Install Docker & Docker Compose
+- https://docs.docker.com/engine/install/ubuntu/
+- https://docs.docker.com/compose/install/
 ```
-https://docs.docker.com/engine/install/ubuntu/
-https://docs.docker.com/compose/install/
+curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && sudo python3 get-pip.py
+apt install -y python3-pip libffi-dev
+curl -sSL https://get.docker.com | sh
+pip3 install docker-compose
 ```
 
 #### SSH server config
@@ -40,8 +47,8 @@ Subsystem sftp  /usr/lib/openssh/sftp-server
 ```
 mkdir -p ~/.ssh && chmod 700 ~/.ssh
 touch ~/.ssh/authorized_keys && chmod 600 ~/.ssh/authorized_keys
-# set public key (ssh-rsa ...pubkey... rsa-key-xxxxxxxx)
 ```
+> set public key (ssh-rsa ...pubkey... rsa-key-xxxxxxxx)
 
 #### fail2ban config
 ```
@@ -65,7 +72,8 @@ maxretry = 3
 ```
 mkdir /mnt/sharedrpi
 ln -s /mnt/sharedrpi /home/USER/sharedrpi
-
+```
+```
 mkdir /scripts && cd /scripts
 git clone https://github.com/adrianlois/RaspberryPi-config-nginx-proxy-letsencrypt-duckdns.git
 mv RaspberryPi-config-nginx-proxy-letsencrypt-duckdns/* .
