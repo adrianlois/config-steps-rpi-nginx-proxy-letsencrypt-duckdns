@@ -67,7 +67,7 @@ ln -s /mnt/sharedrpi /home/USER/sharedrpi
 mkdir /scripts && cd /scripts
 git clone https://github.com/adrianlois/RaspberryPi-config-nginx-proxy-letsencrypt-duckdns.git
 mv RaspberryPi-config-nginx-proxy-letsencrypt-duckdns/* .
-rm -r RaspberryPi-config-nginx-proxy-letsencrypt-duckdns/ && rm LICENSE && rm docker/nginx/htpasswd
+rm -rf RaspberryPi-config-nginx-proxy-letsencrypt-duckdns/ docker/nginx/htpasswd LICENSE README.md
 ```
 
 #### Crontab config
