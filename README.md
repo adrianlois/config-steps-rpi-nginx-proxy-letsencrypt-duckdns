@@ -42,10 +42,10 @@ touch ~/.ssh/authorized_keys && chmod 600 ~/.ssh/authorized_keys
 > set public key (ssh-rsa ...pubkey... rsa-key-xxxxxxxx)
 ```
 apt install -y tree
-adrian@rpi:~$ tree -puga
-├── [drwx------ adrian   adrian  ]  .ssh
-│   └── [-rw------- adrian   adrian  ]  authorized_keys
-└── [lrwxrwxrwx root     root    ]  sharedrpi -> /mnt/sharedrpi
+adrian@rpi:~$ tree -pugah
+├── [drwx------ adrian   adrian   4.0K]  .ssh
+│   └── [-rw------- adrian   adrian    398]  authorized_keys
+└── [lrwxrwxrwx root     root       14]  sharedrpi -> /mnt/sharedrpi
 ```
 
 #### fail2ban config
