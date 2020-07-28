@@ -69,13 +69,16 @@ maxretry = 3
 #### Create shared and scripts folder
 ```
 mkdir /mnt/sharedrpi
-ln -s /mnt/sharedrpi /home/USER/sharedrpi
+ln -s /mnt/sharedrpi /home/adrian/sharedrpi
 ```
 ```
 mkdir /scripts && cd /scripts
 git clone https://github.com/adrianlois/RaspberryPi-config-nginx-proxy-letsencrypt-duckdns.git
 mv RaspberryPi-config-nginx-proxy-letsencrypt-duckdns/* . && mv scripts/* .
 rm -rf RaspberryPi-config-nginx-proxy-letsencrypt-duckdns/ docker/nginx/htpasswd scripts/ LICENSE README.md
+```
+```
+cp -r docker/nginx/.page-error-nginx /home/adrian/sharedrpi/
 ```
 
 #### Crontab config
