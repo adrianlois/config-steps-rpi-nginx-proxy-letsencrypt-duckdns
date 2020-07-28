@@ -78,7 +78,7 @@ mv RaspberryPi-config-nginx-proxy-letsencrypt-duckdns/* . && mv scripts/* .
 rm -rf RaspberryPi-config-nginx-proxy-letsencrypt-duckdns/ docker/nginx/htpasswd scripts/ LICENSE README.md
 ```
 ```
-cp -r docker/nginx/.page-error-nginx /home/adrian/sharedrpi/
+cp -r docker/nginx/.nginx-error-pages /home/adrian/sharedrpi/
 ```
 
 #### Crontab config
