@@ -16,12 +16,12 @@ server {
 	auth_basic_user_file /etc/nginx/.htpasswd;
     }
 
-    error_page 404 /.page-error-nginx/.404.html;
-    location = /.page-error-nginx/.404.html {
+    error_page 404 /.nginx-error-pages/.404.html;
+    location = /.nginx-error-pages/.404.html {
         internal;
     }
-    error_page 500 502 503 504 /.page-error-nginx/.50x.html;
-    location = /.page-error-nginx/.50x.html {
+    error_page 500 502 503 504 /.nginx-error-pages/.50x.html;
+    location = /.nginx-error-pages/.50x.html {
         internal;
     }
 }
