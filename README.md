@@ -210,3 +210,23 @@ AllowUser USER
 DenyAll
 </Limit>
 ```
+
+#### Config SFTP (optional)
+```
+mkdir /var/sftpusers
+groupadd sftp_users
+useradd -d /var/sftpusers -G sftp_users sftpuser1
+chown -R root:sftp_users /var/sftpusers/
+chmod -R 770 /var/sftpusers/
+```
+
+- /etc/ssh/sshd_config
+```
+#Subsystem sftp /usr/libexec/openssh/sftp-server
+Subsystem sftp internal-sftp
+Match Group sftp_users
+ChrootDirectory /var/sftpusers
+ForceCommand internal-sftp
+X11Forwarding no
+AllowTcpForwarding no
+```
