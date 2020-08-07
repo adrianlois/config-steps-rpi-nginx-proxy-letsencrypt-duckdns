@@ -190,7 +190,7 @@ ServerSignature Off
 ServerTokens Prod
 ```
 
-#### Config proftpd (optional)
+#### Proftpd config (optional)
 - /etc/proftpd/proftpd.conf
 ```
 MaxInstances                    3
@@ -211,7 +211,7 @@ DenyAll
 </Limit>
 ```
 
-#### Config SFTP (optional)
+#### SFTP config (optional)
 ```
 mkdir /var/sftpusers
 groupadd sftp_users
