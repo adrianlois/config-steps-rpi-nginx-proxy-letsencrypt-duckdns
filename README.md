@@ -19,6 +19,16 @@ echo "rpi" > /etc/hostname
 echo "IP rpi" >> /etc/hosts
 ```
 
+#### nano editor config (.nanorc)
+```
+set tabsize 4
+set autoindent
+set smooth
+set linenumbers
+set nohelp
+set softwrap
+```
+
 #### SSH server config
 - /etc/ssh/sshd_config
 ```
