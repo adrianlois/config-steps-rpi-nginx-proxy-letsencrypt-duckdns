@@ -29,6 +29,12 @@ set nohelp
 set softwrap
 ```
 
+#### Package installation requirements
+```
+apt update -y
+apt install sysstat htop p7zip-full p7zip-rar zip unzip -y
+```
+
 #### SSH server config
 - /etc/ssh/sshd_config
 ```
