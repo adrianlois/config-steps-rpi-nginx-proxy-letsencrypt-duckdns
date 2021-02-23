@@ -6,9 +6,9 @@ services:
     container_name: duckdns
     restart: always
     environment:
-      - TZ=Europe/Madrid
-      - SUBDOMAINS=SUBDOMAIN
-      - TOKEN=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+      - TZ=${TZ}
+      - SUBDOMAINS=${SUBDOMAINS}
+      - TOKEN=${TOKEN}
       - LOG_FILE=false #optional
 
   nginx-proxy:
@@ -17,8 +17,26 @@ services:
     restart: always
     ports:
       - "80:80"
+      - "443:443"
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
+      - certs:/etc/nginx/certs:ro
+      - confd:/etc/nginx/conf.d
+      - vhostd:/etc/nginx/vhost.d
+      - html:/usr/share/nginx/html
+    labels:
+      - com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy
+
+  letsencrypt-nginx-proxy:
+    image: duch/letsencrypt-nginx-proxy-companion:stable
+    container_name: letsencrypt-nginx-proxy
+    restart: always
+    volumes:
+      - certs:/etc/nginx/certs:rw
+      - confd:/etc/nginx/conf.d
+      - vhostd:/etc/nginx/vhost.d
+      - html:/usr/share/nginx/html
+      - /var/run/docker.sock:/var/run/docker.sock:ro
 
   nginx:
     image: nginx
@@ -32,4 +50,12 @@ services:
       - /scripts/docker/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
       - /scripts/docker/nginx/htpasswd:/etc/nginx/.htpasswd:ro
     environment:
-      - VIRTUAL_HOST=dominio.com,ip
+      - VIRTUAL_HOST=${VIRTUAL_HOST}
+      - LETSENCRYPT_HOST=${LETSENCRYPT_HOST}
+      - LETSENCRYPT_EMAIL=${LETSENCRYPT_EMAIL}
+
+volumes:
+  certs:
+  html:
+  vhostd:
+  confd:
