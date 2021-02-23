@@ -32,7 +32,7 @@ set softwrap
 #### Package installation requirements
 ```
 apt update -y
-apt install sysstat htop p7zip-full p7zip-rar zip unzip -y
+apt install sysstat htop cifs-utils p7zip-full p7zip-rar zip unzip -y
 ```
 
 #### SSH server config
