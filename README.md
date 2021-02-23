@@ -88,9 +88,9 @@ mkdir /mnt/sharedrpi
 ln -s /mnt/sharedrpi /home/adrian/sharedrpi
 
 mkdir /scripts && cd /scripts
-git clone https://github.com/adrianlois/rpi-config-nginx-proxy-letsencrypt-duckdns.git
-mv rpi-config-nginx-proxy-letsencrypt-duckdns/* . && mv scripts/* .
-rm -rf rpi-config-nginx-proxy-letsencrypt-duckdns/ scripts/ LICENSE README.md
+git clone https://github.com/adrianlois/rpi-config-nginx-proxy-letsencrypt-duckdns-owncloud.git
+mv rpi-config-nginx-proxy-letsencrypt-duckdns-owncloud/* . && mv scripts/* .
+rm -rf rpi-config-nginx-proxy-letsencrypt-duckdns-owncloud/ scripts/ LICENSE README.md
 
 chmod 600 .smbcredentials /docker/.env docker/nginx/htpasswd
 cp -r docker/nginx/.nginx-error-pages /home/adrian/sharedrpi/
