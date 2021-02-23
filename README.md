@@ -1,4 +1,4 @@
-## Configuration steps for RaspberryPi
+## Steps Configuration my Raspberry Pi
 
 ### Download image Ubuntu for RPI
 - https://ubuntu.com/download/raspberry-pi
