@@ -121,13 +121,13 @@ chmod 644 /scripts/docker/nginx/htpasswd
 
 #### External usb format ext4 and mount for owncloud
 ```
-mkdir /owncloud && chmod 777 /owncloud
+mkdir /media/owncloud && chmod 777 -R /media/owncloud
 
 fdisk -l
 mkfs.ext4 /dev/sdaX
 
 blkid -o list
-echo -e "\nUUID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx  /owncloud  ext4  defaults  0" >> /etc/fstab
+echo -e "\nUUID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx  /media/owncloud  ext4  defaults  0  0" >> /etc/fstab
 mount -a
 ```
 
