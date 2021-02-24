@@ -29,6 +29,12 @@ set nohelp
 set softwrap
 ```
 
+#### Disable grace period sudo
+- /etc/sudoers
+```
+echo "Defaults timestamp_timeout=0" >> /etc/sudoers
+```
+
 #### Package installation requirements
 ```
 apt update -y
@@ -90,15 +96,15 @@ ln -s /mnt/sharedrpi /home/adrian/sharedrpi
 mkdir /scripts && cd /scripts
 git clone https://github.com/adrianlois/rpi-config-nginx-proxy-letsencrypt-duckdns-owncloud.git
 mv rpi-config-nginx-proxy-letsencrypt-duckdns-owncloud/* . && mv scripts/* .
-rm -rf rpi-config-nginx-proxy-letsencrypt-duckdns-owncloud/ scripts/ LICENSE README.md
+rm -rf rpi-config-nginx-proxy-letsencrypt-duckdns-owncloud/ docker/nginx/htpasswd scripts/ LICENSE README.md
 
-chmod 600 .smbcredentials /docker/.env docker/nginx/htpasswd
+chmod 600 .smbcredentials /docker/.env
 cp -r docker/nginx/.nginx-error-pages /home/adrian/sharedrpi/
 ```
 
 #### Crontab config
 ```
-chmod +x /scripts/sharedrpi.sh
+chmod 700 /scripts/sharedrpi.sh
 ```
 - /etc/crontab
 ```
@@ -110,12 +116,19 @@ chmod +x /scripts/sharedrpi.sh
 ```
 apt install -y apache2-utils
 htpasswd -c /scripts/docker/nginx/htpasswd USER
+chmod 644 /scripts/docker/nginx/htpasswd
 ```
 
-#### Disable grace period sudo
-- /etc/sudoers
+#### External usb format ext4 and mount for owncloud
 ```
-echo "Defaults timestamp_timeout=0" >> /etc/sudoers
+mkdir /owncloud && chmod 777 /owncloud
+
+fdisk -l
+mkfs.ext4 /dev/sdaX
+
+blkid -o list
+echo -e "\nUUID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx  /owncloud  ext4  defaults  0" >> /etc/fstab
+mount -a
 ```
 
 #### Install Docker & Docker Compose
@@ -144,6 +157,9 @@ docker-compose up -d
 - duckdns
 - nginx
 - nginx-proxy (80)
+- owncloud (8080)
+- mariadb
+- redis
 
 ---
 ## Optional configs
