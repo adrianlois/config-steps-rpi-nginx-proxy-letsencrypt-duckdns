@@ -58,8 +58,9 @@ Subsystem sftp  /usr/lib/openssh/sftp-server
 #### SSH permission directories
 ```
 su - adrian
-mkdir -p ~/.ssh && chmod 700 ~/.ssh
+mkdir -p -m 700 ~/.ssh
 touch ~/.ssh/authorized_keys && chmod 600 ~/.ssh/authorized_keys
+(install -m 600 /dev/null ~/.ssh/authorized_keys)
 ```
 > set public key (ssh-rsa ...pubkey... rsa-key-xxxxxxxx)
 ```
@@ -80,10 +81,10 @@ systemctl restart fail2ban
 ```
 ignoreip = 127.0.0.1/8 ::1 NETWORK_IP/24
 [sshd]
-port    = ssh
-logpath = %(sshd_log)s
-backend = %(sshd_backend)s
-bantime = 172800
+port     = ssh
+logpath  = %(sshd_log)s
+backend  = %(sshd_backend)s
+bantime  = 172800
 findtime = 600
 maxretry = 3
 ```
@@ -121,11 +122,12 @@ chmod 644 /scripts/docker/nginx/htpasswd
 
 #### External usb format ext4 and mount for owncloud
 ```
-mkdir /media/owncloud && chmod 777 -R /media/owncloud
+mkdir -m 777 /media/owncloud
 
 fdisk -l
 mkfs.ext4 /dev/sdaX
 
+lsblk -o NAME,FSTYPE,SIZE /dev/sdaX
 blkid -o list
 echo -e "\nUUID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx  /media/owncloud  ext4  defaults  0  0" >> /etc/fstab
 mount -a
