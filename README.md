@@ -79,7 +79,7 @@ systemctl restart fail2ban
 ```
 - /etc/fail2ban/jail.conf
 ```
-ignoreip = 127.0.0.1/8 ::1 NETWORK_IP/24
+ignoreip = 127.0.0.1/8 ::1 <MY_NETWORK_IP>/<CIDR>
 [sshd]
 port     = ssh
 logpath  = %(sshd_log)s
@@ -164,7 +164,7 @@ docker-compose up -d
 - redis
 
 ---
-## Optional configs
+## Optional configs services
 
 #### Samba config (optional)
 - /etc/samba/smb.conf
