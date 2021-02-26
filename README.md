@@ -129,6 +129,7 @@ mkfs.ext4 /dev/sdaX
 
 lsblk -o NAME,FSTYPE,SIZE /dev/sdaX
 blkid -o list
+(ls -l /dev/disk/by-uuid)
 echo -e "\nUUID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx  /media/owncloud  ext4  defaults  0  0" >> /etc/fstab
 mount -a
 ```
