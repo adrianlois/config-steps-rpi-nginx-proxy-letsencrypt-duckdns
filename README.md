@@ -37,8 +37,7 @@ echo "Defaults timestamp_timeout=0" >> /etc/sudoers
 
 #### Package installation requirements
 ```
-apt update -y
-apt install sysstat htop cifs-utils p7zip-full p7zip-rar zip unzip -y
+apt update -y && apt install sysstat htop cifs-utils p7zip-full p7zip-rar zip unzip tree fail2ban apache2-utils -y
 ```
 
 #### SSH server config
@@ -54,6 +53,9 @@ X11Forwarding yes
 AcceptEnv LANG LC_*
 Subsystem sftp  /usr/lib/openssh/sftp-server
 ```
+```
+systemctl enable ssh && systemctl restart ssh
+```
 
 #### SSH permission directories
 ```
@@ -64,7 +66,6 @@ touch ~/.ssh/authorized_keys && chmod 600 ~/.ssh/authorized_keys
 ```
 > set public key (ssh-rsa ...pubkey... rsa-key-xxxxxxxx)
 ```
-apt install -y tree
 adrian@rpi:~$ tree -pugah
 ├── [drwx------ adrian   adrian   4.0K]  .ssh
 │   └── [-rw------- adrian   adrian    398]  authorized_keys
@@ -72,11 +73,7 @@ adrian@rpi:~$ tree -pugah
 ```
 
 #### fail2ban config
-```
-apt-get install -y fail2ban
-systemctl enable fail2ban
-systemctl restart fail2ban
-```
+
 - /etc/fail2ban/jail.conf
 ```
 ignoreip = 127.0.0.1/8 ::1 <MY_NETWORK_IP>/<CIDR>
@@ -88,6 +85,9 @@ bantime  = 172800
 findtime = 600
 maxretry = 3
 ```
+```
+systemctl enable fail2ban && systemctl restart fail2ban
+```
 
 #### Create shared and scripts folder
 ```
@@ -96,10 +96,10 @@ ln -s /mnt/sharedrpi /home/adrian/sharedrpi
 
 mkdir /scripts && cd /scripts
 git clone https://github.com/adrianlois/rpi-config-nginx-proxy-letsencrypt-duckdns-owncloud.git
-mv rpi-config-nginx-proxy-letsencrypt-duckdns-owncloud/* . && mv scripts/* .
+mv rpi-config-nginx-proxy-letsencrypt-duckdns-owncloud/* . && mv scripts/* . && mv scripts/.[!.]* .
 rm -rf rpi-config-nginx-proxy-letsencrypt-duckdns-owncloud/ docker/nginx/htpasswd scripts/ LICENSE README.md
 
-chmod 600 .smbcredentials /docker/.env
+chmod 600 .smbcredentials docker/.env
 cp -r docker/nginx/.nginx-error-pages /home/adrian/sharedrpi/
 ```
 
@@ -115,7 +115,6 @@ chmod 700 /scripts/sharedrpi.sh
 
 #### htpasswd file for nginx or apache2
 ```
-apt install -y apache2-utils
 htpasswd -c /scripts/docker/nginx/htpasswd USER
 chmod 644 /scripts/docker/nginx/htpasswd
 ```
@@ -146,23 +145,29 @@ pip3 install docker-compose
 
 #### Deploy compatible docker containers for RaspberryPi
 
-*docker-compose.yaml*
-- duckdns
-- nginx
-- nginx-proxy (80,443)
-- letsencrypt
 ```
 cd /scripts/docker
 docker-compose up -d
 ```
 
-*docker-compose2.yaml*
+*docker-compose.yaml*
 - duckdns
 - nginx
 - nginx-proxy (80)
 - owncloud (8080)
 - mariadb
 - redis
+
+*docker-compose2.yaml*
+- duckdns
+- nginx
+- nginx-proxy (80,443)
+- letsencrypt
+
+*docker-compose3.yaml*
+- duckdns
+- nginx
+- nginx-proxy (80)
 
 ---
 ## Optional configs services
