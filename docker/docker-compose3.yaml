@@ -27,7 +27,7 @@ services:
     expose:
       - "80"
     volumes:
-      - /home/USER/sharedrpi:/usr/share/nginx/html:ro
+      - /home/adrian/sharedrpi:/usr/share/nginx/html:ro
       - /scripts/docker/nginx/default:/etc/nginx/sites-enabled/default:ro
       - /scripts/docker/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
       - /scripts/docker/nginx/htpasswd:/etc/nginx/.htpasswd:ro
