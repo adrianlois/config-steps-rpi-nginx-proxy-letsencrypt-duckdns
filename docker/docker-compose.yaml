@@ -14,9 +14,9 @@ services:
     container_name: duckdns-d3xf4ult
     restart: always
     environment:
-      - TZ=${TZ}
-      - SUBDOMAINS=${SUBDOMAINS}
-      - TOKEN=${TOKEN}
+      - TZ=${DUCKDNS_TZ}
+      - SUBDOMAINS=${DUCKDNS_SUBDOMAINS}
+      - TOKEN=${DUCKDNS_TOKEN}
       - LOG_FILE=false #optional
 
   nginx-proxy:
