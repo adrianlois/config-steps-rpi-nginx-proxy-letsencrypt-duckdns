@@ -148,6 +148,17 @@ sudo usermod -aG docker ${USER}
 id -nG
 ```
 
+#### Delay docker service startup at system startup
+
+Start nginx containers after mounting the sharedrpi sharedrpi share (crontab script sharedrpi.sh).
+
+```
+sudo systemctl edit docker.service
+
+[Service]
+ExecStartPre=/bin/sleep 90
+```
+
 #### Deploy compatible docker containers for RaspberryPi
 
 ```
