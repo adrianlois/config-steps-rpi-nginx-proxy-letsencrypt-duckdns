@@ -140,7 +140,11 @@ mount -a
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && sudo python3 get-pip.py
 apt install -y python3-pip libffi-dev
 curl -sSL https://get.docker.com | sh
+
 pip3 install docker-compose
+
+sudo usermod -aG docker ${USER}
+id -nG
 ```
 
 #### Deploy compatible docker containers for RaspberryPi
