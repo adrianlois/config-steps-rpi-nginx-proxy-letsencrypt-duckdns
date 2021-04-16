@@ -145,13 +145,12 @@ pip3 install docker-compose
 ```
 
 #### Running docker without sudo from another user
-
 ```
 sudo usermod -aG docker ${USER}
 id -nG
 ```
 
-#### Delay docker service startup at system startup
+#### Delay docker service startup at system boot
 
 Start nginx containers after mounting the sharedrpi sharedrpi share (crontab script sharedrpi.sh).
 
