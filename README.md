@@ -2,6 +2,7 @@
 
 ### Download image Ubuntu for RPI
 - https://ubuntu.com/download/raspberry-pi
+- https://ubuntu.com/tutorials/how-to-install-ubuntu-on-your-raspberry-pi#2-prepare-the-sd-card
 
 #### Add local user
 ```
