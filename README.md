@@ -57,7 +57,7 @@ Subsystem sftp  /usr/lib/openssh/sftp-server
 systemctl enable ssh && systemctl restart ssh
 ```
 
-#### SSH permission directories
+#### SSH permission in directories and configure public key authentication
 ```
 su - adrian
 mkdir -p -m 700 ~/.ssh
@@ -119,7 +119,7 @@ htpasswd -c /scripts/docker/nginx/htpasswd USER
 chmod 644 /scripts/docker/nginx/htpasswd
 ```
 
-#### External usb format ext4 and mount for owncloud
+#### External USB format ext4 and mount for ownCloud
 ```
 mkdir -m 777 /media/owncloud
 
