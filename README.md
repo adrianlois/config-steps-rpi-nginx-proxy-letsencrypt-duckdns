@@ -134,16 +134,19 @@ echo -e "\nUUID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx  /media/owncloud  ext4  def
 mount -a
 ```
 
-#### Install Docker & Docker Compose
+### Install Docker & Docker Compose
 - https://docs.docker.com/engine/install/ubuntu/
 - https://docs.docker.com/compose/install/
 ```
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && sudo python3 get-pip.py
 apt install -y python3-pip libffi-dev
 curl -sSL https://get.docker.com | sh
-
 pip3 install docker-compose
+```
 
+#### Running docker without sudo from another user
+
+```
 sudo usermod -aG docker ${USER}
 id -nG
 ```
