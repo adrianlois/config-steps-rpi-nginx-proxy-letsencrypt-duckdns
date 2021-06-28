@@ -38,7 +38,12 @@ echo "Defaults timestamp_timeout=0" >> /etc/sudoers
 
 #### Package installation requirements
 ```
-apt update -y && apt install sysstat htop cifs-utils p7zip-full p7zip-rar zip unzip tree fail2ban apache2-utils -y
+apt update -y && apt install sysstat htop cifs-utils p7zip-full p7zip-rar zip unzip tree fail2ban apache2-utils bat -y
+```
+
+#### Add aliases to my .bashrc
+```
+echo "alias cat='batcat'" >> $HOME/.bashrc
 ```
 
 #### SSH server config
